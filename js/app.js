@@ -1,7 +1,7 @@
 // Import all modular JS files
 import { initializeNavigation, updateNavigation } from './navigation.js';
 import { initializeTheme } from './theme.js';
-import { initializeFileUpload, handleAnalysis } from './upload.js';
+import { initializeFileUpload } from './upload.js';
 import { initializeAuth, checkTokenValidity } from './auth.js';
 import { loadStoredRoutines } from './routine.js';
 import { initializeProgressTracking, initializeProgressCalendar } from './progress.js';  // Import both functions
@@ -15,7 +15,7 @@ let guestRoutineType = localStorage.getItem("guestRoutineType") || null;
 // App state accessible to imported modules
 export const appState = {
   // Use a default API URL instead of relying on process.env
-  API_URL: 'http://localhost:3000',
+  API_URL: 'https://lumina-backend-1d90.onrender.com',
   currentUser,
   authToken,
   guestRoutine,
