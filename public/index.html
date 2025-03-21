@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lumina Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Cookie&family=Imperial+Script&family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo"><span class="cursive" style="font-size: 50px;">Lumina</span></div>
+            <nav>
+                <ul id="navLinks">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="about">About</a></li>
+                    <li><a href="#" data-page="upload">Upload</a></li>
+                    <li><a href="#" data-page="routine">Routine</a></li>
+                    <li><a href="#" data-page="progress" class="auth-required">Progress</a></li>
+                    <li><a href="#" data-page="login" class="auth-link">Login</a></li>
+                    <li><a href="#" data-page="register" class="auth-link">Register</a></li>
+                    <li class="auth-profile" style="display: none; margin-left: 5px;">
+                        <a href="#" id="logoutButton">Logout</a>
+                    </li>
+                    <li id="userProfileContainer" class="auth-profile" style="display: none;">
+                        <a href="#" id="userProfileLink">
+                            <i class="fas fa-user" style="margin-right: 7px;"></i> <span id="userDisplayName"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="home" style="background-image: url('css/bg.jpeg'); height: 26.4rem; background-size:contain; background-position: center;" class="page active">
+            <div class="content" id="home-content">
+                <h1>Welcome to <span class="cursive" style="font-size: 50px;" > Lumina </span> Skincare</h1>
+                <p>Your AI-powered skincare assistant.</p>
+                <button data-page="upload" style="margin-top: 10px;">Get Started</button>
+            </div>
+        </section>
+
+        <section id="about" class="page" style="padding-bottom: 0;">
+            <div class="content" style="margin-bottom: 0%;">
+                <p>AI-powered skincare analysis and personalized routines for better skin health.</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Mission</h2>
+                        <p>At Lumina Skincare, we believe everyone deserves personalized skincare solutions based on their unique needs. Our AI-powered platform analyzes your skin conditions to provide tailored recommendations that work for you.</p>
+                        
+                        <h2>How It Works</h2>
+                        <p>Upload an image, tell us about your budget preferences, and our advanced AI will analyze your skin's condition. Within seconds, you'll receive a personalized skincare routine designed specifically for your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upload" class="page" style="padding-top: 3rem; padding-bottom: 2rem;">
+            <div class="content">
+                <h1>Analyze Your Skin</h1>
+                <div class="upload-container" style="margin-top: 10px;">
+                    <div class="upload-column left-column">
+                        <div class="upload-box">
+                            <label for="fileInput">📷 Upload Image</label>
+                            <input type="file" id="fileInput" accept="image/*">
+                            <div id="preview"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-column right-column">
+                        <div class="analysis-prompt">
+                            <h3>Ready for your personalized routine?</h3>
+                            <p style="font-size: 16px;">Upload an image in good lighting for the best results.</p>
+                            <button id="submitButton" class="primary-button" style="margin-top: 0px;">
+                                <i class="fas fa-magic"></i> Analyze My Skin
+                            </button>
+                            <div id="result" class="result-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="routine" class="page" style="padding-top: 2.5%; padding-bottom: 2%;" >
+            <div class="content">
+              <h1 style="margin-bottom: 10px; font-size: 2rem;">Your Personalized Routine</h1>
+              
+              <div class="routine-intro">
+                <p>Your personalized skincare routine is based on AI analysis of your skin's unique needs.</p>
+              </div>
+              
+              <!-- Routine Cards Container -->
+              <div id="routineDisplay" class="routine-cards-container">
+                <div class="empty-routine">
+                  <i class="fas fa-flask-vial"></i>
+                  <p>No routine available yet.</p>
+                  <a href="#" data-page="upload" class="primary-button">
+                    Get started with your first skin analysis!
+                  </a>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <section id="login" class="page" style="
+        padding-top: 20px; 
+        padding-bottom: 15px;
+        background-image: url('css/bg.jpeg'); height: 26.4rem; background-size:contain; background-position: center;">
+            <div class="content" id="login-content">
+                <div class="form-container" style="width: 100%; max-width: 30rem; margin-top: 4%;">
+                    <h1>Login</h1>
+                    <div class="input-group">
+                        <input type="text" id="loginUser" placeholder="Enter your username">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPass" placeholder="Enter your password">
+                    </div>
+                    <button id="loginButton">Login</button>
+                    <p class="form-footer">Don't have an account? <a href="#" data-page="register">Register</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="page" style="background-image: url('css/bg.jpeg'); height: 26.4rem; background-size:contain; background-position: center; padding-top: 12px; padding-bottom: 0px;">
+            <div class="content" id="register-content">
+                <div class="form-container" style="margin: 0%; width: 100%; max-width: 30rem; margin: 0 auto; padding-bottom: 2px; padding-top: 9px;">
+                    <h1 style="margin-bottom: 8px;">Create an Account</h1>
+                    <div class="input-group flex-row">
+                        <input type="text" id="registerName" placeholder="Enter your name" style="margin-right: 10px;">
+                        <input type="text" id="registerUser" placeholder="Choose a username">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="registerEmail" style="margin-bottom: 0px;" placeholder="Enter your email address">
+                    </div>
+                    <div class="input-group flex-row" style="margin: 0px; margin-bottom: 0px;">
+                        <div class="radio-group">
+                            <label style="margin-right: 10px;">Gender</label>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="registerPass" placeholder="Create Password" style="margin-bottom: 10px;"> 
+                        <input type="password" id="registerConfirmPass" style="margin-bottom: 0px;" placeholder="Confirm password">
+                    </div>
+                    <button id="registerButton">Create Account</button>
+                    <p class="form-footer" style="font-size: 16px; margin-bottom: 6px;">Already have an account? <a href="#" data-page="login">Login</a></p>
+                </div>
+            </div>
+        </section>  
+        
+        <section id="progress" class="page auth-required" style="padding-top: 2.5%;">
+            <div class="content">
+                <h1 style="margin-bottom: 1.5%; font-size: 2rem;">Track Your Progress</h1>
+                
+                <div class="progress-intro">
+                    <p style="margin-bottom: 2px;">Monitor your skincare consistency with our calendar tracker. </p>
+                    <p style="margin-bottom: 2%;">Green indicates days you completed your routine, while red shows missed days.</p>
+                </div>
+                
+                <div class="progress-container">
+                    <!-- Calendar on left -->
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                            <h2 id="currentMonth">March 2025</h2>
+                            <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        
+                        <div class="weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        
+                        <div class="calendar-days" id="calendarDays">
+                            <!-- Calendar days will be generated here -->
+                        </div>
+                        
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <div class="legend-color completed"></div>
+                                <span>Completed</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color missed"></div>
+                                <span>Missed</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color today"></div>
+                                <span>Today</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats on right, vertically stacked -->
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <h3>Monthly Completion</h3>
+                            <div class="stat-value" id="monthlyCompletion">85%</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Current Streak</h3>
+                            <div class="stat-value" id="currentStreak">5 days</div>
+                        </div>
+                        <div class="stat-card" style="margin-bottom: 0%;">
+                            <h3>Longest Streak</h3>
+                            <div class="stat-value" id="longestStreak">14 days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">© 2025 <span class="cursive" style="font-size: 20px;">Lumina  </span> Skincare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="../js/app.js"></script>
+</body>
+</html>
